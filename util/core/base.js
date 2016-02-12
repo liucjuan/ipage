@@ -7,7 +7,12 @@ var Util = function () {
 
 Util.fn = Util.prototype;
 
-Util.extend = function (obj) {//Util À©Õ¹×ÔÉí·½·¨
+/**
+ * å¯¹å¯¹è±¡è¿›è¡Œæ‰©å±•
+ * @param obj
+ * @returns {*} æ‰©å±•åçš„åŸæ¥å¯¹è±¡
+ */
+Util.extend = function (obj) {
     var length = arguments.length;
     if (length < 1 || obj == null) return null;
     return _.extend(this.fn, obj);

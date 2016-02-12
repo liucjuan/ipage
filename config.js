@@ -15,6 +15,9 @@ util.extend(Config.prototype, {
         this.expressConfig();
         this.nunjucksConfig();
     },
+    /**
+     * express 配置
+     */
     expressConfig: function () {
         var app = this.app;
         app.set('views', './views');
@@ -22,32 +25,35 @@ util.extend(Config.prototype, {
         app.set("ip", process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
         app.set("port", process.env.OPENSHIFT_NODEJS_PORT || 3000);
 
-        app.use("/~", express.static(__dirname + '/public'));
+        app.use("/~", express.static(__dirname + '/static'));
         app.use(logger("dev"));
         app.use(function (req, res, next) {
             util.extend(app.locals, {
                 ContextRoot: "/",
-                //JsPath: "/~/js/",
                 JsPath:"http://dy66.file.alimmdn.com/script/ipage/",
-                //CssPath: "/~/css/"
+                JsPath: "/~/js/",
                 CssPath:"http://dy66.file.alimmdn.com/style/",
+                CssPath: "/~/css/"
             });
             next();
         });
 
     },
+    /**
+     * nunjucks 模版引擎配置
+     */
     nunjucksConfig: function () {
         nunjucks.configure('views', {
             autoescape: true,
             express: this.app,
-            tags: {
-                blockStart: '<%',
-                blockEnd: '%>',
-                variableStart: '<$',
-                variableEnd: '$>',
-                commentStart: '<#',
-                commentEnd: '#>'
-            }
+            //tags: {
+            //    blockStart: '<%',
+            //    blockEnd: '%>',
+            //    variableStart: '<$',
+            //    variableEnd: '$>',
+            //    commentStart: '<#',
+            //    commentEnd: '#>'
+            //}
         });
 
     }
