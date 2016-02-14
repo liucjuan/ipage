@@ -9,12 +9,18 @@ var Routes = function (app) {
 };
 
 util.extend(Routes.prototype, {
+
+    //region 路由初始化
     init: function () {
         this.adminPage();
         this.adminJson();
         this.indexPage();
         this.indexJson();
+        this.apiJson();
     },
+    //endregion
+
+    //region admin 相关路由
     adminPage: function () {
         this.app.get("/admin", adminController.index);
 
@@ -28,6 +34,9 @@ util.extend(Routes.prototype, {
             adminController.markdown(req, res);
         });
     },
+    //endregion
+
+    //region 首页相关路由
     indexPage: function () {
         this.app.get("/welcome", function (req, res) {
             res.send("Welcome!");
@@ -41,14 +50,23 @@ util.extend(Routes.prototype, {
             res.set({
                 "Content-Type": "application/json"
             });
-            res.cookie("say",{"King":"Hello","God":"Shit","Date":new Date()});
+            res.cookie("say", {"King": "Hello", "God": "Shit", "Date": new Date()});
             res.send(util.serialize({"say": "Hello"}))
         });
         this.app.get("/json/date", function (req, res) {
             res.contentType = "application/json";
             res.send(new Date());
         });
+    },
+    //endregion
+
+    //region api路由
+    apiJson: function () {
+        this.app.get("/api", function (req, res) {
+            res.send("这是一个测试");
+        });
     }
+    //endregion
 
 });
 
