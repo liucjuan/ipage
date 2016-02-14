@@ -32,9 +32,9 @@ util.extend(Config.prototype, {
                 ContextRoot: "/",
 
                 JsPath:"http://dy66.file.alimmdn.com/script/ipage/",
-                JsPath: "/~/js/",
+                //JsPath: "/~/js/",
                 CssPath:"http://dy66.file.alimmdn.com/style/",
-                CssPath: "/~/css/"
+                //CssPath: "/~/css/"
             });
             next();
         });
