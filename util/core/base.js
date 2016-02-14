@@ -7,7 +7,7 @@ var Util = function () {
 
 Util.fn = Util.prototype;
 
-Util.extend = function (obj) {//Util 扩展自身方法
+Util.extend = function (obj) {//Util 鎵╁睍
     var length = arguments.length;
     if (length < 1 || obj == null) return null;
     return _.extend(this.fn, obj);

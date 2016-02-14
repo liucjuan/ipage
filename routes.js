@@ -6,7 +6,7 @@ var util = require("./util"),
 var Routes = function (app) {
     this.app = app;
     this.init();
-}
+};
 
 util.extend(Routes.prototype, {
     init: function () {
@@ -24,13 +24,17 @@ util.extend(Routes.prototype, {
             res.contentType = "application/json";
             res.send(util.serialize({"say": "I am admin json!"}))
         });
-
+        this.app.get("/admin/json/markdown",function(req,res){
+            adminController.markdown(req, res);
+        });
     },
     indexPage: function () {
         this.app.get("/welcome", function (req, res) {
             res.send("Welcome!");
         });
-        this.app.get("/", homeController.index);
+        this.app.get("/", function(req, res){
+            homeController.index(req, res);
+        });
     },
     indexJson: function () {
         this.app.get("/json", function (req, res) {

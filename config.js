@@ -27,10 +27,11 @@ util.extend(Config.prototype, {
         app.use(function (req, res, next) {
             util.extend(app.locals, {
                 ContextRoot: "/",
-                //JsPath: "/~/js/",
+
                 JsPath:"http://dy66.file.alimmdn.com/script/ipage/",
-                //CssPath: "/~/css/"
+                JsPath: "/~/js/",
                 CssPath:"http://dy66.file.alimmdn.com/style/",
+                CssPath: "/~/css/"
             });
             next();
         });
