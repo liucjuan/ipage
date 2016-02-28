@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "express": "^4.2",
-    "mongoose": "^4.1.7",
+    "markdown-js": ">= 0.0.1",
+    "mongoose": "^4.4.0",
     "morgan": "^1.6.1",
     "nunjucks": "^2.1.0",
     "request": "^2.69.0",

@@ -1,12 +1,13 @@
 var util = require("./util"),
     controller = require("./controller"),
     adminController = controller.admin,
-    homeController = controller.home;
+    homeController = controller.home,
+    apiController = controller.api;
 
 var Routes = function (app) {
     this.app = app;
     this.init();
-}
+};
 
 util.extend(Routes.prototype, {
 
@@ -30,7 +31,9 @@ util.extend(Routes.prototype, {
             res.contentType = "application/json";
             res.send(util.serialize({"say": "I am admin json!"}))
         });
-
+        this.app.get("/admin/json/markdown", function (req, res) {
+            adminController.markdown(req, res);
+        });
     },
     //endregion
 
@@ -62,6 +65,9 @@ util.extend(Routes.prototype, {
     apiJson: function () {
         this.app.get("/api", function (req, res) {
             res.send("这是一个测试");
+        });
+        this.app.get("/api/prime", function (req, res) {
+            apiController.prime(req, res);
         });
     }
     //endregion

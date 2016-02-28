@@ -4,4 +4,5 @@
 module.exports = {
     admin: require("./admin/"),
     home: require("./home/"),
+    api: require("./api/"),
 }
